@@ -1,0 +1,14 @@
+/* Navbar */
+#MainLogo{
+    font-size: 52px;
+    font-family: 'Rubik', sans-serif;
+    color: #4ca9cb;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+#navbardrop
+{
+    font-size: 20px;
+}
