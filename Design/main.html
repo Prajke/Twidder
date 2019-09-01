@@ -24,9 +24,11 @@
                 Login
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" >
-                  <a class="dropdown-item" href="#">Link 1</a>
-                  <a class="dropdown-item" href="#">Link 2</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
+                  <form id="loginform" action="client.html" method="post" onsubmit="login(email.value, password.value); return false;">
+                    <input type="email" class="textinput" name="email" placeholder="Email" required="">
+                    <input type="password" id="confirmpassword" class="textinput" name="password" placeholder="Password" required="" minlength="8"> 
+                    <input type="submit" id="SignupButton" name="" value="Login" class="BtnFilled">
+                  </form>
                 </div>
               </li>
             </ul>
@@ -35,7 +37,7 @@
       </nav>
       <div id="LandingContent">
         <div id="LandingText">
-          <h1>CONNECT, CREATE, SHARE</h1>
+          <h1>Connect, Create & Share</h1>
           <h3>A new way to connect and  share with your friends</h2>
         </div>
         <button id="LandingButton" class="BtnOutline"> Sign Up</button>
@@ -50,8 +52,24 @@
           </ul>
         </div>
         <div id="SignupForm">
-          <form action=""></form>
-          <button id="SignupButton" class="BtnFilled"> Sign Up</button>
+          <form id="createaccountform" action="client.html" method="post" onsubmit="createAccount(this); return false;">
+            <input type="text" class="textinput" name="firstname" placeholder="First name" minlength="2" required="">
+            <input type="text" class="textinput" name="lastname" placeholder="Last name" minlength="2" required="">
+
+            <select class="selectinput" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="none">None</option>
+            </select>
+            <input type="text" class="textinput" name="country" placeholder="Country" minlength="2" required="">
+            <input type="text" class="textinput" name="city" placeholder="City" minlength="2" required="">
+            <input type="email" class="textinput" name="email" placeholder="Email" required="">
+            <input type="password" class="textinput" id="password" name="password" placeholder="Password" required="" minlength="8">
+            <input type="password" class="textinput" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required="" minlength="8">
+
+
+            <input id="SignupButton" type="submit" name="" value="Create account" class="BtnFilled">
+          </form>
         </div>
       </div>
      
