@@ -53,7 +53,8 @@ body {
 /* Mobile */
 @media(max-width: 576px) {
     body {
-      background-image: url(Mobile.svg);
+      /*background-image: url(Mobile.svg);*/
+      background-image: none;
     }
     h1 {
         font-size: 34px;

@@ -133,6 +133,13 @@ p {
 #confirmpassword{
     margin-bottom: 30px;
 }
+
+#NoteContent{
+    margin-top:100px;
+    margin-left: auto;
+    margin-right: auto;
+    width:70%;
+}
 /* Buttons */
 .BtnOutline {
     display: block;
