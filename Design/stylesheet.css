@@ -130,12 +130,36 @@ p {
     float: left;
     padding: 8px;
 }
-#confirmpassword{
+#confirmpassword {
     margin-bottom: 30px;
 }
 
-#NoteContent{
-    margin-top:100px;
+#ProfileContent {
+    margin-top:170px;
+    margin-left: auto;
+    margin-right: auto;
+    width:60%;
+    
+}
+#LeftProfile {
+    width:200px;
+    height: 280px;
+    margin: auto;
+}
+#LeftProfile img {
+    
+    width:200px;
+    margin-bottom: 20px;
+}
+#Profilebtn {
+    margin: auto;
+}
+#RightProfile {
+    width:500px;
+    margin: auto;
+}
+#NoteContent {
+    margin-top:80px;
     margin-left: auto;
     margin-right: auto;
     width:70%;
