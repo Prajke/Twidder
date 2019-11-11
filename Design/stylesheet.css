@@ -24,12 +24,12 @@ h1 {
 }
 h2 {
     font-family:'Roboto', 'sans-serif';
-    font-size: 30px;
+    font-size: 26px;
     font-weight:400;
     color: #858585;
 }
 h3 {
-    font-size: 24px;
+    font-size: 18px;
     color: rgb(155, 154, 154);
     font-size: 400;
     
@@ -43,6 +43,8 @@ p {
     font-size: 35px;
     font-family: 'Rubik', sans-serif;
     color: #4ca9cb;
+    margin: 0px;
+    margin-top: 10px;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
@@ -54,6 +56,10 @@ p {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+#cust_dropdown{
+    font-size: 14px;
 }
 /* Content */
 
@@ -145,18 +151,24 @@ p {
     width:200px;
     height: 280px;
     margin: auto;
+   
 }
 #LeftProfile img {
     
     width:200px;
     margin-bottom: 20px;
+    
 }
 #Profilebtn {
     margin: auto;
 }
 #RightProfile {
-    width:500px;
-    margin: auto;
+    text-align: center;
+    max-width:500px;
+    margin: auto; 
+}
+#RightProfile p{
+    text-align: left;
 }
 #NoteContent {
     margin-top:80px;
@@ -213,3 +225,14 @@ p {
     height: 48px;
 }
 
+.form-control:focus {
+    box-shadow: none;
+  }
+  
+.form-control-underlined {
+  
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+  }
