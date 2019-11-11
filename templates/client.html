@@ -4,53 +4,83 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rubik:900" rel="stylesheet">
   <link href="{{ url_for('static',filename='styles/stylesheet.css') }}" rel="stylesheet" type="text/css" media="screen">
   <script src="{{url_for('static', filename='clientscript.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js" type="text/javascript"></script>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+
+
+  
   <script type="text/view" id="welcomeview">
-    <div id="topbar">
-    <input id="toggle" type="checkbox">
-    <label for="toggle"id="loginformbutton" class="formbutton">LOGIN</label>
-
-    <div id="login">
-        <form id="loginform" action="client.html" method="post" onsubmit="login(email.value, password.value); return false;">
-                <input type="email" class="textinput" name="email" placeholder= "Email" required placeholder="Enter a valid email address">
-                <input type="password" class="textinput" name="password" placeholder="Password" required placeholder="The password needs to be atleast 8 characters long" minlength="8"> </label>
-                <input type="submit" name="" value="Login" class="submitbutton">
-        </form>
+    <link href="{{ url_for('static',filename='styles/responsive-style.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <nav class="navbar  navbar-expand navbar-dark">
+      <a class="navbar-brand" href="#"><h1 id="MainLogo">TWIDDER</h1></a>
+      
+      
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Login
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" >
+              <form id="loginform" action="client.html" method="post" onsubmit="login(email.value, password.value); return false;">
+                <input type="email" class="textinput" name="email" placeholder="Email" required="">
+                <input type="password" id="confirmpassword" class="textinput" name="password" placeholder="Password" required="" minlength="8"> 
+                <input type="submit" id="SignupButton" name="" value="Login" class="BtnFilled">
+              </form>
+            </div>
+          </li>
+        </ul>
+     
+  
+  </nav>
+  <div id="LandingContent">
+    <div id="LandingText">
+      <h1>Connect, Create & Share</h1>
+      <h3>A new way to connect and  share with your friends</h2>
     </div>
+    <form action="#BottomContent">
+      <button id="LandingButton" class="BtnOutline" href="#BottomContent"> Sign Up</button>
+    </form>
+  
+  </div>
+  <div id="BottomContent">
+    <div id="SignupText">
+      <h2>Sign Up Now</h2>
+      <ul>
+        <li><h3>Connect with old and new friends</h3></li>
+        <li><h3>Create your own personal page</h3></li>
+        <li><h3>Share custom notes on pages</h3></li>
+      </ul>
     </div>
-    <div id ="welcomeview">
-        <div id = "logo">
-          <h1>TWIDDER</h1>
-          <h2> Connect, Share & Enjoy</h2>
-        </div>
-        <div id="signup">
-            <form id="createaccountform" action="client.html" method="post" onsubmit="createAccount(this); return false;">
-              <input type="text" class="nameinput" name="firstname" placeholder="First name" minlength="2" required placeholder="Enter a valid name">
-              <input type="text" class="nameinput" name="lastname" placeholder="Last name" minlength="2" required placeholder="Enter a valid name">
+    <div id="SignupForm">
+      <form id="createaccountform" action="client.html" method="post" onsubmit="createAccount(this); return false;">
+        <input type="text" class="textinput" name="firstname" placeholder="First name" minlength="2" required="">
+        <input type="text" class="textinput" name="lastname" placeholder="Last name" minlength="2" required="">
 
-              <select class="selectinput" name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="none">None</option>
-              </select>
-              <input type="text" class="textinput" name="country" placeholder="Country" minlength="2" required placeholder="Enter a valid country">
-              <input type="text" class="textinput" name="city" placeholder="City" minlength="2" required placeholder="Enter a valid city">
-              <input type="email" class="textinput"  name="email" placeholder="Email" required placeholder="Enter a valid email address">
-              <input type="password" class="textinput"  id="password" name="password" placeholder="Password" required minlength="8">
-              <input type="password" class="textinput" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required minlength="8">
+        <select class="selectinput" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="none">None</option>
+        </select>
+        <input type="text" class="textinput" name="country" placeholder="Country" minlength="2" required="">
+        <input type="text" class="textinput" name="city" placeholder="City" minlength="2" required="">
+        <input type="email" class="textinput" name="email" placeholder="Email" required="">
+        <input type="password" class="textinput" id="password" name="password" placeholder="Password" required="" minlength="8">
+        <input type="password" class="textinput" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required="" minlength="8">
 
 
-              <input type="submit" name="" value="Create account"  class="submitbutton">
-            </form>
-
-        </div>
-      </div>
-
+        <input id="SignupButton" type="submit" name="" value="Create account" class="BtnFilled">
+      </form>
+    </div>
+  </div>
     </script>
   <script type="text/view" id="homeview">
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>Bootstrap example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+  
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:900" rel="stylesheet">
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color:#ffffff ; border-bottom: 1px solid #C4BEBE;" >
+        <div class="container">
+            <a class="navbar-brand mr-auto" href="#"><h1 id="MainLogo">TWIDDER</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <form class="form-inline my-2 my-md-0 ml-auto">
+                <input class="form-control form-control-underlined" type="search" placeholder="Search" aria-label="Search">
+               <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--> 
+            </form>
+            
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Settings
+                  </a>
+                  <ul id="cust_dropdown" class="dropdown-menu dropdown-menu-right" >
+                      <li><a class="dropdown-item" href="#">Change Password</a></li>
+                      <div class="dropdown-divider"></div>
+                      <li><a class="dropdown-item" href="#">Log Out </a> </li>
+                    
+                  </ul>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </nav> 
+      <div id="ProfileContent">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <div id="LeftProfile">
+              <img src="profilepic.png">
+              <button id="Profilebtn" class="BtnFilled">Add Connection</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div id="RightProfile">
+              <h2>Name Name</h2>
+              <h3>name@mail.com</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit est quibusdam hic qui, odio corporis placeat tempore cupiditate illum optio quaerat libero ipsum repellat voluptate commodi quam doloremque expedita nihil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="NoteContent">
+        <div class="row justify-content-center">
+          <div class="col-auto mb-3">
+            <div class="card text-center" style="width: 287px; height: 293px;">
+              <div class="card-body">
+                <h5 class="card-title">name</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, libero eos doloribus alias labore minus. Sit possimus quasi est? Adipisci aut voluptatibus soluta obcaecati! Et a sed nemo dolorum fuga.</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-auto mb-3">
+            <div class="card text-center" style="width: 287px; height: 293px;">
+              <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odit ipsa veritatis dignissimos repudiandae delectus, sequi soluta error dicta? Dignissimos consequuntur illo in perspiciatis, voluptatum quisquam aliquam deserunt ipsa eum?</p>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-auto mb-3">
+            <div class="card text-center" style="width: 287px; height: 293px;">
+              <div class="card-body">
+                <h5 class="card-title">Name</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nostrum deleniti earum tenetur vel, ex quo quasi assumenda id rerum minima doloremque consequatur est non maiores, accusantium fuga fugiat officiis.</p>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  </body>

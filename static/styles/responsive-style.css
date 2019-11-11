@@ -1,0 +1,105 @@
+
+body {
+    width:100%;
+    height:1700px;
+    padding: 40px 50px 50px 50px;
+    background-image: url(resources/Web.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: absolute;
+    background-color: white;   
+}
+/* Navbar */
+.navbar{
+    margin-left:-15px;
+}
+#MainLogo {
+    font-size: 45px;
+    font-family: 'Rubik', sans-serif;
+    color: #4ca9cb;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+#navbardrop {
+    font-size: 25px;
+    color: white;
+    font-family:'Roboto', 'sans-serif';
+}
+#navbardrop:hover {
+    opacity: 0.8;
+}
+/*###################  MEDIA QUERIES  ###################*/
+/* Pad   */
+@media(max-width: 992px) {
+    body {
+      background-image: url({{url_for('static', filename='resources/Pad.svg')}};
+    }
+    #navbardrop {
+        
+        color: #4ca9cb;
+    }
+    #LandingContent {
+        top: 80px; 
+    }
+    #LandingText h3{
+        width: 350px;
+        margin-top:20px;
+    }
+    #SignupForm{
+        float:left;
+    }
+}
+/* Mobile */
+@media(max-width: 576px) {
+    body {
+      /*background-image: url(Mobile.svg);*/
+      background-image: none;
+    }
+    h1 {
+        font-size: 34px;
+        font-weight:700;
+        color: #858585;
+        text-align: center;
+    }
+    h2{
+        font-size: 25px;
+        text-align: center;
+    }
+    h3 {
+        font-size: 20px;
+        color: rgb(155, 154, 154);
+        font-size: 300;
+        text-align: center; 
+    }
+    #LandingContent {
+        top: 150px; 
+    }
+    #LandingText h3{
+        width: 350px;
+        margin: auto;
+        margin-top:50px;
+       
+    }
+    #LandingButton{
+        margin: auto;
+        margin-top: 100px
+    }
+    #BottomContent{
+        width: 400px;
+        margin: auto;
+        position: absolute;
+        top: 1200px;
+    }
+    #SignupText {
+        float: none;
+        margin: auto;
+    }
+    #SignupForm{
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+    
+}
