@@ -11,10 +11,7 @@ class Database:
         self.commit()
         self.connection.close()
 
-    #def init_db():
-    #    return sqlite3.connect("database.db")
-
-    #works#
+    # Creates a userprofile in the database.
     def addUser(self,user):
         sql = "INSERT INTO USERS (email, firstname, familyname, gender, city, country, password) VALUES (?, ?,?,?,?,?,?)"
         val = (user["email"], user["firstname"], user["familyname"], user["gender"], user["city"], user["country"], user["password"])
@@ -22,7 +19,7 @@ class Database:
         self.db.commit()
         return self.validateUser(user["email"])
 
-    #works#
+    # Retrieves information about a userprofile.
     def getUser(self, email):
         sql = "SELECT * FROM USERS WHERE email = ? "
         val = (email,)
@@ -42,7 +39,7 @@ class Database:
         }
         return user
 
-    #works#
+    # Validates that it exists a userprofile with the provided email.
     def validateUser(self, email):
         user = self.getUser(email)
         if user == []:
@@ -50,7 +47,7 @@ class Database:
         else:
             return True
 
-    #works#
+    # Affirms that there exists a userprofile with the provided email and password.
     def checkPassword(self, email, password):
         sql = "SELECT * FROM USERS WHERE email = ? AND password = ? "
         val = (email, password,)
@@ -61,7 +58,7 @@ class Database:
         else:
             return False
 
-    #works#
+    # Updates the password for a userprofile.
     def changePassword(self, email , oldpassword, newpassword):
         if self.checkPassword(email,oldpassword):
             sql = "UPDATE users SET password = ? WHERE email = ? "
@@ -72,7 +69,7 @@ class Database:
         else:
             return False
 
-    #works#
+    # Stores a message for a userprofile.
     def postMessage(self, sender, reciever, message):
         sql = "CREATE TABLE IF NOT EXISTS '"+reciever+"' (sender TEXT NOT NULL, message	TEXT NOT NULL)"
         self.cursor.execute(sql)
@@ -85,7 +82,7 @@ class Database:
         else:
             return True
 
-    #works#
+    # Retrieves all messages connected to the userprofile with the email provided.
     def getMessages(self, email):
         try:
             #print (email)
@@ -104,7 +101,8 @@ class Database:
         except sqlite3.Error as e:
             return []
 
-    #works#
+    # Inserts the email and token of the userprofile that is active.
+    # The active user list keeps track of all active users.
     def insertActiveUser(self,email,token):
         try:
             sql = "INSERT INTO activeusers (email, token) VALUES (?, ?)"
@@ -114,7 +112,7 @@ class Database:
             return self.validateToken(token)
         except sqlite3.Error as e:
             return False
-    #works#
+    # Removes a user from the active user list.
     def removeActiveUser(self, email):
         sql = "SELECT token FROM activeusers WHERE email = ?"
         val = (email,)
@@ -126,10 +124,11 @@ class Database:
         self.cursor.execute(sql, val)
         self.db.commit()
         if token == None:
-            return None;
+            return None
         else:
-            return ' '.join(token);
+            return ' '.join(token)
 
+    # Provides the token connected to the provided email.
     def emailToToken(self,email):
         sql = "SELECT token FROM activeusers WHERE email = ?"
         val = (email,)
@@ -140,7 +139,8 @@ class Database:
             return None;
         else:
             return ' '.join(row)
-    #works
+    
+    #  Provides the email connected to the provided token.
     def tokenToEmail(self,token):
         sql = "SELECT email FROM activeusers WHERE token = ?"
         val = (token,)
@@ -148,11 +148,11 @@ class Database:
         self.db.commit()
         row = self.cursor.fetchone()
         if row == None:
-            return None;
+            return None
         else:
             return ' '.join(row) #Converts from tuple to string
 
-    #works#
+    # Validates the provided token.
     def validateToken(self, token):
         row = self.tokenToEmail(token)
         if row == None:
@@ -160,6 +160,7 @@ class Database:
         else:
             return True
 
+    # Validates if a certain userprofile is active.
     def validateActiveUser(self, email):
         sql = "SELECT * FROM activeusers WHERE email = ?"
         val = (email,)
@@ -170,6 +171,8 @@ class Database:
             return False
         else:
             return True
+
+    #Sum of the number of userprofiles.
     def nrUsers(self):
         sql = "SELECT COUNT(*) FROM users"
         self.cursor.execute(sql)
@@ -177,6 +180,7 @@ class Database:
         data = self.cursor.fetchone()
         return data[0]
 
+    #Sum of userprofiles that are active.
     def nrActiveUsers(self):
         sql = "SELECT COUNT(*) FROM activeusers"
         self.cursor.execute(sql)
@@ -184,6 +188,7 @@ class Database:
         data = self.cursor.fetchone()
         return data[0]
 
+    #Sum of userprofiles which has the provided gender.
     def nrGender(self, gender):
         ""
         sql = "SELECT COUNT(*) FROM  users WHERE gender= ?"

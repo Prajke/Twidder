@@ -10,6 +10,8 @@ app = Flask(__name__)
 db = database_helper.Database()
 websockets = {}
 
+# Generates a unique token that is used as a key for authentication.
+# The token gives access to the data in the databases by enabling functions in the server that retrieves and sends data to the database.
 def generateToken():
     bytes = os.urandom(24)
     token =  str(b64encode(bytes).decode('utf-8'))
@@ -18,6 +20,7 @@ def generateToken():
     else:
         generateToken()
 
+# Loads the "client.html" file when the standard route is called.
 @app.route('/', methods = ['GET'])
 def index():
     return render_template("client.html")
@@ -26,7 +29,9 @@ def index():
 def test():
     return jsonify({"success": True, "message": "Test"})
 
-
+# Inits a websocket which represents a session. 
+# A session is created when a userprofile credentials are used to log in. 
+# These sessions are used to prevent for userprofiles to be active simultaneously.
 @app.route('/init_socket')
 def init_socket():
     try:
@@ -48,6 +53,7 @@ def init_socket():
     except:
         print("Exception in init_socket")
 
+# Calls the update graph function
 @app.route('/update_graph/', methods = ['GET'])
 def init_update_graph():
     token = request.headers.get('Token')
@@ -57,6 +63,7 @@ def init_update_graph():
     else:
         return jsonify({"success": False, "message": "Token is not valid"})
 
+# Updates the live graph with specific stastics by sending information through a websocket, thus creating a live graph.
 def update_graph():
     data = json.dumps({
         "users" : db.nrUsers(),
@@ -68,31 +75,33 @@ def update_graph():
         websockets[key].send(json.dumps({"success": True, "message": "Update graph", "data": data}))
 
 
-#Klar
+# Affirms if the provided credentials for the userprofile exists and is correct.
 @app.route('/sign_in', methods = ['POST'])
 def sign_in():
     data = request.get_json()
     name = data['email']
     password = data['password']
     if db.checkPassword(name, password):
+        # Validates if the userprofile is already active, if so the other active session are terminated and signed out.
         if db.validateActiveUser(name):
-            oldToken = db.emailToToken(name)#db.removeActiveUser(name)
+            oldToken = db.emailToToken(name)
             ws = websockets[oldToken]
             del websockets[oldToken]
             db.removeActiveUser(name)
-            ws.send(json.dumps({'success':False, 'message':"You have been logged out !!!"}))
+            ws.send(json.dumps({'success':False, 'message':"You have been logged out! "}))
             ws.close()
         token = generateToken()
         db.insertActiveUser(name,token)
-        return jsonify({'success':True, 'message':"Signing in",'data':token})
+        return jsonify({'success':True, 'message':"Signing in!",'data':token})
     else:
-        return jsonify({'success':False, 'message':"Wrong username or password"})
+        return jsonify({'success':False, 'message':"Wrong username or password. Try again!"})
 
-#Klar
+# Creates a new userprofile based on the information provided.
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
     data = request.get_json()
     email = data['email']
+    # Validate that the information provided is in a correct format.
     if "@" in email and len(email) > 4 and len(data['firstname']) > 1 and len(data['familyname']) > 1 and len(data['city']) > 1 and len(data['country']) > 1 and len(data['password']) > 7 and (data['gender'] == "male" or data['gender'] == "female" or data['gender'] == "none") :
         if  not db.validateUser(email):
             user = {
@@ -105,14 +114,14 @@ def sign_up():
                 "country": data['country']
             }
             db.addUser(user)
-            update_graph();
-            return jsonify({"success": True, "message": "Successfully created a new user."})
+            #update_graph()
+            return jsonify({"success": True, "message": "Successfully created a new account. Logging in!"})
         else:
-            return jsonify({"success": False, "message": "User already exists"})
+            return jsonify({"success": False, "message": "This email is already exists. Try another email!"})
     else:
-        return jsonify({"success": False, "message": "Data is not correct"})
+        return jsonify({"success": False, "message": "The information provided is not correct. Try again!"})
 
-#Klar
+# Signs out the active userprofile by removing the token.
 @app.route('/sign_out', methods = ['POST'])
 def sign_out():
     data = request.get_json()
@@ -120,12 +129,12 @@ def sign_out():
     if db.validateToken(token):
         email = db.tokenToEmail(token)
         db.removeActiveUser(email)
-        update_graph();
+        #update_graph();
         return jsonify({"success": True, "message": "Successfully signed out."})
     else:
         return jsonify({"success": False, "message": "Token is not valid"})
 
-#Klar
+# Changes the password for a userprofile.
 @app.route('/Change_password', methods=['POST'])
 def Change_password():
     data = request.get_json()
@@ -144,7 +153,7 @@ def Change_password():
     else:
         return jsonify({"success": False, "message": "Token is not valid"})
 
-#Klar
+# Retrieve information about a userprofile by using the token to provide with a email.
 @app.route('/Get_user_data_by_token/', methods=['GET'])
 def Get_user_data_by_token(email = None):
     data = request.get_json()
@@ -158,7 +167,7 @@ def Get_user_data_by_token(email = None):
     else:
         return jsonify({"success": False, "message": "Token is not valid"})
 
-#Klar
+# Retrieve information about a userprofile by using the provided email.
 @app.route('/Get_user_data_by_email/<email>', methods=['GET'])
 def Get_user_data_by_email(email = None):
     data = request.get_json()
@@ -171,8 +180,7 @@ def Get_user_data_by_email(email = None):
     else:
         return jsonify({"success": False, "message": "Token is not valid"})
 
-
-#Klar
+# Retrieve messages from a userprofile by using the token to provide with a email.
 @app.route('/Get_user_messages_by_token/', methods=['GET'])
 def Get_user_messages_by_token():
     token = request.headers.get('Token')
@@ -182,7 +190,7 @@ def Get_user_messages_by_token():
     else:
         return jsonify({"success": False, "message": "Token is not valid."})
 
-#Klar
+# Retrieve messages from a userprofile by using the provided email.
 @app.route('/Get_user_messages_by_email/<email>', methods=['GET'])
 def Get_user_messages_by_email(email = None):
     data = request.get_json()
@@ -195,7 +203,7 @@ def Get_user_messages_by_email(email = None):
     else:
         return jsonify({"success": False, "message": "Token is not valid."})
 
-#Klar
+# Stores a message for the specific userprofile.
 @app.route('/Post_message', methods=['POST'])
 def Post_messages():
     data = request.get_json()
@@ -209,11 +217,11 @@ def Post_messages():
                 toEmail = fromEmail
         if db.validateUser(toEmail):
             if db.postMessage(fromEmail,toEmail,content):
-                return jsonify({"success": True, "message": "Message posted"})
+                return jsonify({"success": True, "message": "Message posted!"})
             else:
                 return jsonify({"success": False, "message": "No such user."})
     else:
-        return jsonify({"success": False, "message": "You are not logged in."})
+        return jsonify({"success": False, "message": "Token is not valid."})
 
 if __name__ == '__main__':
 
