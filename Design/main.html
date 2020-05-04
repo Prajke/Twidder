@@ -27,9 +27,28 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" >
                   <form id="loginform" action="client.html" method="post" onsubmit="login(email.value, password.value); return false;">
-                    <input type="email" class="textinput" name="email" placeholder="Email" required="">
+                   <!--  <input type="email" class="textinput" name="email" placeholder="Email" required="">
                     <input type="password" id="confirmpassword" class="textinput" name="password" placeholder="Password" required="" minlength="8"> 
-                    <input type="submit" id="SignupButton" name="" value="Login" class="BtnFilled">
+                   -->
+                    <div class="form-group row">
+                      <div class="col">
+                        <input type="email" id="materialLoginFormEmail" class="form-control form-control-underlined" placeholder="Email">
+                        
+                      </div>
+                    </div>
+              
+                    <div class="form-group row">
+                      <div class="col">
+                      <input type="password" id="materialLoginFormPassword" class="form-control form-control-underlined" placeholder="Password">
+                      
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col">
+                     <button type="submit" id="SignupButton" name=""  class="BtnOutline">Login</button>
+                    </div>
+                  </div>
                   </form>
                 </div>
               </li>
@@ -57,23 +76,67 @@
           </ul>
         </div>
         <div id="SignupForm">
+          <label for="createaccountform">Create your account</label>
           <form id="createaccountform" action="client.html" method="post" onsubmit="createAccount(this); return false;">
-            <input type="text" class="textinput" name="firstname" placeholder="First name" minlength="2" required="">
-            <input type="text" class="textinput" name="lastname" placeholder="Last name" minlength="2" required="">
+            <div class="form-group row">
+              <div class="col">
+                <input type="text" class="form-control" name="firstname" placeholder="First name" minlength="2" required="">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <div class="col">
+                <input type="text" class="form-control" name="lastname" placeholder="Last name" minlength="2" required="">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <div class="col">  
+              <select class="form-control" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="none">None</option>
+              </select>
+              </div>
+            </div>
 
-            <select class="selectinput" name="gender">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="none">None</option>
-            </select>
-            <input type="text" class="textinput" name="country" placeholder="Country" minlength="2" required="">
-            <input type="text" class="textinput" name="city" placeholder="City" minlength="2" required="">
-            <input type="email" class="textinput" name="email" placeholder="Email" required="">
-            <input type="password" class="textinput" id="password" name="password" placeholder="Password" required="" minlength="8">
-            <input type="password" class="textinput" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required="" minlength="8">
+            <div class="form-group row">
+              <div class="col">
+                <input type="text" class="form-control" name="country" placeholder="Country" minlength="2" required="">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <div class="col">
+                <input type="text" class="form-control" name="city" placeholder="City" minlength="2" required="">
+              </div>
+            </div>
 
+            <div class="form-group row">
+              <div class="col">
+                <input type="email" class="form-control" name="email" placeholder="Email" required="">
+              </div>
+            </div>
+           
+            <div class="form-group row">
+              <div class="col">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" minlength="8">
+              </div>
+            </div>
 
-            <input id="SignupButton" type="submit" name="" value="Create account" class="BtnFilled">
+            <div class="form-group row">
+              <div class="col">
+                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required="" minlength="8">
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <div class="col">
+                <input id="SignupButton" type="submit" name="" value="Create account" class="BtnOutline">
+              </div>
+            </div>
+
+            
           </form>
         </div>
       </div>

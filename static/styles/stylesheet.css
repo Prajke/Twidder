@@ -79,6 +79,7 @@ p {
 #loginform{
     padding:20px;
     height: 200px;
+    width: 300px;
 }
 #BottomContent{
     position: absolute;
@@ -96,15 +97,14 @@ p {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     text-align: center;
-    width: 240px;
-    height: 480px;
+    width: 300px;
     padding: 20px;
     float: right;
     margin-top:50px;
 }
 #SignupButton {
-    margin:auto;
-    
+    width: 100%;
+    margin-top: 10px;
 }
 .nameinput {
     border: 1px solid #858585;
@@ -176,6 +176,24 @@ p {
     margin-right: auto;
     width:70%;
 }
+#Passwordchange{
+    margin: auto;
+    margin-top: 170px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+}
+
+#Savebtn{
+    width: 100%;
+}
+
+#Commentbtn{
+    width: 100%;
+}
 /* Buttons */
 .BtnOutline {
     display: block;
@@ -183,7 +201,7 @@ p {
     border: 2px solid #4ca9cb;
     border-radius: 6px;
     width: 175px;
-    height: 53px;
+    height: 45px;
     color: #4ca9cb;
     font-weight: bold;
     transition: 0.1s;
@@ -193,13 +211,8 @@ p {
 .BtnOutline:hover {
     background: #4ca9cb;
     color: white;
+}
 
-}
-.BtnOutline:active {
- 
-    width: 165px;
-    height: 48px;
-}
 
 .BtnFilled {
     display: block;
@@ -207,7 +220,7 @@ p {
     border: 2px solid #4ca9cb;
     border-radius: 6px;
     width: 175px;
-    height: 53px;
+    height: 45px;
     color: white;
     font-weight: bold;
     transition: 0.1s;
@@ -215,14 +228,7 @@ p {
 }
 
 .BtnFilled:hover {
-    background: #4ca9cb;
-    color: white;
-
-}
-.BtnFilled:active {
- 
-    width: 165px;
-    height: 48px;
+    text-decoration: underline;
 }
 
 .form-control:focus {

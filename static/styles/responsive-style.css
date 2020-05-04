@@ -3,7 +3,7 @@ body {
     width:100%;
     height:1700px;
     padding: 40px 50px 50px 50px;
-    background-image: url(resources/Web.svg);
+    background-image: url('/static/resources/Web.svg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: absolute;
@@ -34,7 +34,7 @@ body {
 /* Pad   */
 @media(max-width: 992px) {
     body {
-      background-image: url({{url_for('static', filename='resources/Pad.svg')}};
+      background-image:url('/static/resources/Pad.svg');
     }
     #navbardrop {
         
@@ -49,6 +49,7 @@ body {
     }
     #SignupForm{
         float:left;
+        background-color: white;
     }
 }
 /* Mobile */
